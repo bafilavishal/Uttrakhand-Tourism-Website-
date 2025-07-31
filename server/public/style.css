@@ -1,0 +1,667 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+/*=============================Banner=============================*/
+
+  /* Banner Styles */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-text-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.banner-heading h4,
+.banner-heading h5 {
+    font-size: 40px;
+    margin: 10px 0;
+    color: #fde02f;
+    font-family: 'Satisfy', cursive;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+input,
+.date,
+.book {
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+}
+
+.book {
+    background-color: #fde02f;
+    color: black;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+
+
+/* ////     *//* ====== Nav Bar Container ====== */
+.nav-bar {
+  position: fixed; /* Fixed at top */
+  top: 0;
+  width: 100%;
+  background: linear-gradient(90deg, #fceabb,); /* vibrant warm gradient */
+  padding: 12px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(248, 181, 0, 0.4);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  z-index: 1000;
+}
+
+/* ====== Logo ====== */
+.logo {
+  flex-shrink: 0;
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+.logo img {
+  width: 90px;
+  height: auto;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.15));
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+/* ====== Menu ====== */
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.menu li {
+  font-weight: 600;
+  font-size: 17px;
+  text-transform: uppercase;
+}
+
+.menu li a {
+  color: #333;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.menu li a:hover {
+  background-color: #f8b500;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(248, 181, 0, 0.5);
+}
+
+/* ====== Signup Button ====== */
+.signup-btn,
+.signup-link {
+  margin-left: auto;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #ff7e5f, #feb47b); /* warm vibrant gradient */
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  border-radius: 50%;
+  border: 2px solid #ff6f3c;
+  box-shadow:
+    0 4px 8px rgba(255, 126, 95, 0.7),
+    inset 0 -3px 6px rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background: 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease,
+    transform 0.2s ease;
+  text-decoration: none;
+  text-align: center;
+  padding: 0 5px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.signup-btn:hover,
+.signup-link:hover {
+  background: linear-gradient(135deg, #feb47b, #ff7e5f);
+  box-shadow:
+    0 6px 12px rgba(255, 126, 95, 0.9),
+    inset 0 -4px 8px rgba(255, 255, 255, 0.5);
+  color: white;
+  transform: scale(1.1);
+}
+
+
+
+/* ====== Profile Menu Container ====== */
+#profileMenu {
+  position: relative;
+  display: none; /* Show only when logged in */
+  margin-left: auto;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ====== Profile Icon ====== */
+#profileIcon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid #f8b500;
+  box-shadow: 0 0 12px rgba(248, 181, 0, 0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#profileIcon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 18px rgba(248, 181, 0, 1);
+}
+
+/* ====== Dropdown Menu ====== */
+#dropdownMenu {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 240px;
+  background-color: #fff8e1; /* soft yellow */
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(248, 181, 0, 0.4);
+  padding: 15px 20px;
+  display: none;
+  z-index: 1010;
+  user-select: none;
+}
+
+/* Show dropdown when profileMenu has class 'active' or on hover */
+#profileMenu.active #dropdownMenu,
+#profileMenu:hover #dropdownMenu {
+  display: block;
+}
+
+/* User info inside dropdown */
+#dropdownMenu > div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+#dropdownMenu > div img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #f8b500;
+  box-shadow: 0 0 8px rgba(248, 181, 0, 0.6);
+}
+
+#userName {
+  font-weight: 700;
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+}
+
+#dropdownMenu span {
+  font-size: 13px;
+  color: #4caf50; /* green */
+  font-weight: 600;
+}
+
+/* Dropdown links */
+#dropdownMenu ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+#dropdownMenu ul li {
+  margin: 10px 0;
+}
+
+#dropdownMenu ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.3s ease;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+#dropdownMenu ul li a:hover {
+  background-color: #f8b500;
+  color: white;
+  box-shadow: 0 2px 8px rgba(248, 181, 0, 0.7);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .menu {
+    gap: 15px;
+  }
+
+  .menu li {
+    font-size: 14px;
+  }
+
+  #dropdownMenu {
+    width: 200px;
+  }
+}
+
+
+/* Video Banner */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 1.5rem;
+}
+
+/* Places Section */
+.places-text {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.places-text small {
+    font-family: Roboto;
+    color: #ffc342;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.places-text h2 {
+    font-family: Barlow Condensed;
+    font-size: 55px;
+    color: #191d34;
+    letter-spacing: 1px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+}
+
+.card {
+    border: 1px solid lightgray;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    width: 80%;
+}
+
+.card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Footer */
+.footer {
+  background-color: #000;
+  color: #fff;
+  padding: 60px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-col {
+  flex: 1 1 220px;
+  margin: 20px;
+}
+
+.footer-col h4 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.footer-col h4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  height: 2px;
+  width: 50px;
+  background-color: #e91e63;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.footer-col ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #e91e63;
+}
+
+.social-links a {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: #e91e63;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+.social-links a:hover {
+  background-color: #fff;
+  color: #e91e63;
+}
+
+@media (max-width: 768px) {
+  .footer-row {
+    flex-direction: column;
+  }
+}
+
+
+
+/* tavel destination css  */
+
+.section-heading {
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 60px 0 30px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+/*--------------------------css ----------------------------- */
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  z-index: 5;
+  width: 100%; /* Ensures content is not clipped */
+  padding: 0 20px; /* Padding for responsiveness */
+}
+
+.search-box, .date-box, .book-btn {
+  width: 100%; /* Ensures the inputs/buttons are fully responsive */
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+/* Optional: Add hover effect for better user interaction */
+.book-btn:hover {
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+}
+
+
+/* Main container padding to push it down */
+.places {
+    margin-top: 80px;
+    padding: 20px;
+    background: #f5f5f5;
+}
+
+/* Title styling */
+.places-text h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Cards layout */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+/* Individual card styles */
+.card {
+    display: block;
+    width: 300px;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    text-decoration: none;
+    color: #222;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* Image inside card */
+.img-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Text below image */
+.text {
+    padding: 20px;
+}
+
+.text h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.text p {
+    font-size: 1em;
+    color: #666;
+}
+
+/* travel destination background css */
+
+/* Background Image */
+.places {
+  background-image: url("travelbackpic.png"); /* Replace with your background image file */
+  background-size: cover;
+  background-position: center;
+  padding: 60px 20px;
+}
+
+/* Section Title */
+.places-text {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.places-text h2 {
+  font-size: 42px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Cards Grid */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Break line after 3 cards */
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+/* Individual Card */
+.card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: center;
+  text-decoration: none;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.img-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.text h2 {
+  margin: 15px 0;
+  font-size: 20px;
+  color: #333;
+}
+
+/* ----------------------------notification -------------------------- */
+
+.scrolling-notification {
+  background-color: #007acc;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding: 10px 0;
+  border-bottom: 2px solid #005f99;
+  z-index: 1000;
+  text-align: center;
+}
+
+.scrolling-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll-left 20s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

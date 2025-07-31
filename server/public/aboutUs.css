@@ -1,0 +1,63 @@
+/* Ensure the background image covers the full viewport */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    background: url('Utta.png') no-repeat center center fixed;
+    background-size: cover; /* Ensures the image stretches to fit the entire screen */
+}
+
+/* Overlay for readability */
+.content-overlay {
+    position: relative;
+    min-height: 100vh; /* Ensures content covers the full viewport height */
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay for better text readability */
+    padding: 20px;
+}
+
+/* Center text and content */
+header {
+    text-align: center;
+    padding: 50px 0;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.about-content, .facilities, .contact {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent background for readability */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.contact p {
+    text-align: center;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    margin-top: 20px;
+}

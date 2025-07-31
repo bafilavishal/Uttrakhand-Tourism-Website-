@@ -1,0 +1,53 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-color: #f5f5f5;
+    line-height: 1.6;
+}
+
+/* Header */
+.header {
+    background-color: #2E8B57;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    text-align: center;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.hero-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.hero-text p {
+    font-size: 1.2rem;

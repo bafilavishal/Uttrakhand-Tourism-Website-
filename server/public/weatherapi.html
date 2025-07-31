@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather App</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      color: white;
+      background: #282c34;
+      background-size: cover;
+      background-position: center;
+      transition: background 0.5s ease-in-out;
+    }
+
+.container {
+  margin-top: 5%;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;              /* Make responsive */
+  max-width: 320px;        /* Limit width */
+  max-height: 450px;       /* Add height control */
+  overflow-y: auto;        /* Scroll if content overflows */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+    h1 {
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    .input-box {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    input {
+      width: 60%;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px 0 0 5px;
+      outline: none;
+    }
+
+    .weather-clickable {
+      width: 50px;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+      padding-left: 5%;
+    }
+
+    .weather-clickable:hover {
+      transform: scale(1.1);
+    }
+
+    .weather-box {
+      margin-top: 20px;
+      font-size: 1.3rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 10px rgba(120, 69, 69, 0.6);
+    }
+
+    #forecast-result {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background: rgba(69, 64, 64, 0.5);
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    #forecast-result th, #forecast-result td {
+      padding: 10px;
+      border-bottom: 1px solid white;
+      color: white;
+    }
+
+    .weather-icon {
+      width: 40px;
+      filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.8));
+      padding-left: 20%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌎 Weather Forecast</h1>
+
+    <div class="input-box">
+      <input type="text" id="city" placeholder="Enter city name" />
+      <img
+        src="https://cdn-icons-png.flaticon.com/128/869/869869.png"
+        id="weather-button"
+        class="weather-clickable"
+        alt="Get Weather"
+      />
+    </div>
+
+    <div id="weather-result" class="weather-box"></div>
+
+    <table id="forecast-result">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Temp (°C)</th>
+          <th>Condition</th>
+          <th>Icon</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script>
+    async function getWeather() {
+      const city = document.getElementById("city").value.trim();
+      if (!city) {
+        alert("Please enter a city name");
+        return;
+      }
+
+      const weatherApiKey = "c0e2814df00f0946735a6f4318d18f33";
+      const unsplashApiKey = "icEmQUDbE0rZiGPgFN3xoNyT1CZ02pkwxFfxWkUWhbI";
+
+      const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherApiKey}&units=metric`;
+      const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${weatherApiKey}&units=metric`;
+      const unsplashUrl = `https://api.unsplash.com/search/photos?query=${city}&client_id=${unsplashApiKey}&per_page=1`;
+
+      try {
+        // Fetch current weather
+        const weatherResponse = await fetch(weatherUrl);
+        const weatherData = await weatherResponse.json();
+
+        if (weatherData.cod === 200) {
+          const temperature = weatherData.main.temp.toFixed(1);
+          const weatherCondition = weatherData.weather[0].description;
+          const humidity = weatherData.main.humidity;
+
+          document.getElementById("weather-result").innerHTML = `
+            <h3>${city}</h3>
+            <p><strong>Temperature:</strong> ${temperature}°C</p>
+            <p><strong>Condition:</strong> ${weatherCondition}</p>
+            <p><strong>Humidity:</strong> ${humidity}%</p>
+          `;
+
+          // Fetch 5-day forecast
+          const forecastResponse = await fetch(forecastUrl);
+          const forecastData = await forecastResponse.json();
+          const forecastList = forecastData.list.filter((item, index) => index % 8 === 0);
+
+          let forecastHTML = "";
+          forecastList.forEach(day => {
+            const date = new Date(day.dt * 1000).toISOString().split("T")[0];
+            const temp = day.main.temp.toFixed(1);
+            const condition = day.weather[0].description;
+            const icon = `https://openweathermap.org/img/wn/${day.weather[0].icon}.png`;
+
+            forecastHTML += `
+              <tr>
+                <td>${date}</td>
+                <td>${temp}°C</td>
+                <td>${condition}</td>
+                <td><img src="${icon}" class="weather-icon" /></td>
+              </tr>
+            `;
+          });
+
+          document.querySelector("#forecast-result tbody").innerHTML = forecastHTML;
+
+          // Unsplash background image
+          const unsplashResponse = await fetch(unsplashUrl);
+          const unsplashData = await unsplashResponse.json();
+          if (unsplashData.results.length > 0) {
+            const imageUrl = unsplashData.results[0].urls.regular;
+            document.body.style.backgroundImage = `url('${imageUrl}')`;
+          }
+        } else {
+          document.getElementById("weather-result").innerHTML = "<span style='color:red;'>City not found!</span>";
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("weather-button").addEventListener("click", getWeather);
+    });
+  </script>
+</body>
+</html>

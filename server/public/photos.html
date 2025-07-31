@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Photo Gallery</h1>
+    <div class="gallery-container">
+        <div class="gallery-item"><img src="temp11.jpeg" alt="Photo 1"></div>
+        <div class="gallery-item"><img src="ww.jpeg" alt="Photo 1"></div>
+                <div class="gallery-item"><img src="chardham.png" alt="Photo 1"></div>
+
+        <div class="gallery-item"><img src="hhh.jpg" alt="Photo 2"></div>
+        <div class="gallery-item"><img src="m.jpeg" alt="Photo 1"></div>
+        <div class="gallery-item"><img src="p1.webp" alt="Photo 3"></div>
+        <div class="gallery-item"><img src="tall.jpeg" alt="Photo 1"></div>
+        <div class="gallery-item"><img src="te.jpeg" alt="Photo 1"></div>
+        <div class="gallery-item"><img src="p2.jpg" alt="Photo 4"></div>
+        <div class="gallery-item"><img src="tttt.jpeg" alt="Photo 1"></div>
+        <div class="gallery-item"><img src="clu.jpeg" alt="Photo 1"></div>
+        <div class="gallery-item"><img src="g.jpeg" alt="Photo 1"></div>
+        <div class="gallery-item"><img src="mmmm.jpeg" alt="Photo 1"></div>
+        <div class="gallery-item"><img src="bagi.png" alt="Photo 1"></div>
+        <div class="gallery-item"><img src="p4.webp" alt="Photo 5"></div>
+        <div class="gallery-item"><img src="hara.jpeg" alt="Photo 1"></div>
+        <div class="gallery-item"><img src="p7.jfif" alt="Photo 6"></div>
+        <div class="gallery-item"><img src="pp9.jpg" alt="Photo 7"></div>
+        <div class="gallery-item"><img src="r1.jpg" alt="Photo 8"></div>
+        <div class="gallery-item"><img src="ri1.webp" alt="Photo 9"></div>
+        <div class="gallery-item"><img src="Utta.png" alt="Photo 10"></div>
+        <div class="gallery-item"><img src="q2.jpg" alt="Photo 11"></div>
+        <div class="gallery-item"><img src="holi.png" alt="Photo 12"></div>
+        <div class="gallery-item"><img src="advan.png" alt="Photo 13"></div>
+        <div class="gallery-item"><img src="cc.png" alt="Photo 14"></div>
+    </div>
+    
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="">
+    </div>
+    
+    <script>
+        const images = document.querySelectorAll(".gallery-item img");
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+
+        images.forEach(image => {
+            image.addEventListener("click", () => {
+                lightboxImg.src = image.src;
+                lightbox.classList.add("active");
+            });
+        });
+        
+        function closeLightbox() {
+            lightbox.classList.remove("active");
+        }
+    </script>
+</body>
+</html>

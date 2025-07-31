@@ -1,0 +1,60 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Responsive Booking Form</title>
+    <link rel="stylesheet" href="form.css" />
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();  // prevent real form submission
+            alert("Booking successful!");
+            window.location.href = "index.html";  // redirect to main page (change if needed)
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="form-title">BOOKING FORM</h1>
+        <form id="bookingForm" onsubmit="handleSubmit(event)">
+            <div class="main-user-info">
+                <div class="user-input-box">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter Full Name" required>
+                </div>
+                <div class="user-input-box">
+                    <label for="destination">Destination</label>
+                    <input type="text" id="destination" name="destination" placeholder="Enter Destination" required>
+                </div>
+                <div class="user-input-box">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter Email" required>
+                </div>
+                <div class="user-input-box">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number" required>
+                </div>
+                <div class="user-input-box">
+                    <label for="departureDate">Check-In Date</label>
+                    <input type="date" id="departureDate" name="departureDate" required>
+                </div>
+                <div class="user-input-box">
+                    <label for="returnDate">Return Date</label>
+                    <input type="date" id="returnDate" name="returnDate" required>
+                </div>
+                <div class="user-input-box">
+                    <label for="numberOfPersons">Total Person</label>
+                    <input type="number" id="numberOfPersons" name="numberOfPersons" placeholder="Enter Total Person" required>
+                </div>
+                <div class="user-input-box">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Enter your message here..." rows="4" required></textarea>
+                </div>
+            </div>
+            <div class="form-submit-btn">
+                <input type="submit" value="SUBMIT" />
+            </div>
+        </form>
+    </div>
+</body>
+</html>

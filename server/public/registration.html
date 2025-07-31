@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Registration</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+
+    .container {
+      background: #ffffff;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      width: 360px;
+    }
+
+    .tab-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .tab-buttons button {
+      padding: 10px 24px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 15px;
+    }
+
+    .tab-buttons .active {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .tab-buttons button:not(.active) {
+      background-color: #f0f0f0;
+      color: #333;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    form label {
+      font-weight: 600;
+      margin-top: 15px;
+      display: block;
+      font-size: 14px;
+      color: #444;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: border 0.3s;
+    }
+
+    form input:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 14px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 25px;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="tab-buttons">
+      <button class="active">Register</button>
+      <button onclick="window.location.href='login.html'">Login</button>
+    </div>
+
+    <h2>Create Account</h2>
+    <form action="/register" method="POST">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="John Doe" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="example@email.com" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="********" required />
+
+      <input type="submit" value="Register" />
+    </form>
+  </div>
+</body>
+</html>

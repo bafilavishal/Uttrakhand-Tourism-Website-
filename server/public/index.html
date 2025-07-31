@@ -1,0 +1,566 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title> UTTRAKHAND </title>
+    <style>
+        /* Inline CSS to remove underline from card links */
+        .card {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card .text {
+            color: #2d3146;
+        }
+
+        /* Navbar positioning */
+        .nav-bar {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            z-index: 10;
+        }
+
+        .nav-bar .logo {
+            font-size: 24px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .nav-bar .menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .nav-bar .menu li {
+            margin-left: 20px;
+        }
+
+        .nav-bar .menu li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        /* Video background */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        #background-video {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            z-index: 5;
+        }
+
+        /* Travel Destinations styling */
+        .destination-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        /* Chatbot styles */
+        .chat-icon {
+            width: 60px;
+            height: 60px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 999;
+        }
+
+        .chatbot-modal {
+            display: none;
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 300px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            font-family: Arial, sans-serif;
+        }
+
+        .chatbot-header {
+            padding: 10px;
+            background-color: #2d3146;
+            color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .chatbot-body {
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .chatbot-footer {
+            padding: 10px;
+            display: flex;
+            gap: 5px;
+        }
+
+        .chatbot-footer input {
+            flex-grow: 1;
+            padding: 5px;
+        }
+
+        .chatbot-footer button {
+            padding: 5px 10px;
+        }
+
+        .option-button {
+            display: block;
+            margin: 5px 0;
+            width: 100%;
+            padding: 8px;
+            background-color: #f0f0f0;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            border-radius: 5px;
+        }
+
+        .user {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .bot {
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+ </head>
+ <body>
+    <!--===============Banner================-->
+    <div class="video-container">
+        <video id="background-video" autoplay muted loop>
+            <source src="n.mp4" type="video/mp4">
+            <source src="n.mp4" type="video/webm">
+            <source src="n.mp4" type="video/ogg">
+            Your browser does not support the video tag.
+        </video>
+        
+        <section class="banner">
+            <div class="banner-text-item">
+                <div class="banner-heading">
+                    <h4>Welcome to Uttarakhand Tourism</h4>
+                    <h5>Explore the beauty of Uttarakhand</h5>
+                </div>
+                <form class="form">
+                    <input type="text" list="mylist" placeholder="Where would you like to go?">
+                    <datalist id="mylist">
+                        <option></option>
+                        <option>Nainital</option>
+                        <option>Kedarnath</option>
+                        <option>Jageshwar</option>
+                        <option>Badrinath</option>
+                        <option>Pithoragarh</option>
+                        <option>Rishikesh</option>
+                    </datalist>
+                    <input type="date" class="date">
+                    <a href="form.html" class="book">book</a>
+                </form>
+            </div>
+        </section>
+    </div>
+
+ <!-- =========== Nav Bar =========== -->
+ 
+<section class="nav-bar">
+  <div class="logo">
+    <img src="logooo.png" alt="Logo" width="80">
+  </div>
+
+  <ul class="menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="photos.html">Photos</a></li>
+    <li><a href="aboutUs.html">About us</a></li>
+  </ul>
+
+  
+  <!-- Sign Up Button -->
+<a href="registration.html" id="signupBtn" style="
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(to bottom right, #f6f204b7, #fdff71);
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  font-size: 10px;
+  line-height: 4;
+  text-align: center;
+">
+  SignUp.<br>
+</a>
+
+
+
+  <!-- Profile dropdown -->
+  <div id="profileMenu">
+    <img src="Profilephoto.png" alt="Profile" id="profileIcon" />
+    <div id="dropdownMenu">
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+        <img src="profilephoto.png" alt="User" width="40" height="40" style="border-radius: 50%;" />
+        <div>
+          <p id="userName" style="margin: 0;">User</p>
+          <span style="font-size: 12px;">Active now 🟢</span>
+        </div>
+      </div>
+      <hr />
+      <ul>
+        <li><a href="#">👤 Profile</a></li>
+        <li><a href="#">📦 My Orders</a></li>
+        <li><a href="#">⚙️ Settings</a></li>
+        <li><a href="#">🎁 Rewards</a></li>
+        <li><a href="#">📞 Support</a></li>
+        <li><a href="#" id="logoutBtn">🚪 Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+  
+<!-- =========== Scrolling Notification =========== -->
+<div class="scrolling-notification">
+  <marquee behavior="scroll" direction="left" scrollamount="6">
+    🛕 <strong>Char Dham Yatra 2025:</strong> Online registration is mandatory | 
+    💡 Special discount on group bookings | 🌦️ Check daily weather updates before traveling |
+     📧 Email: info@uttarakhandtourism.in | 📞 Helpline: 9548318292
+  </marquee>
+</div>
+
+    <!--==============Places===================-->
+
+
+<!-- Travel Destinations Section -->
+<section class="places" id="tours-section">
+  <div class="places-text">
+    <h2>Explore Uttarakhand</h2>
+  </div>
+
+  <div class="cards">
+    <a href="Temple.html" class="card">
+      <div class="zoom-img">
+        <div class="img-card">
+          <img src="Badrinath1.jpg" alt="Scenic view of Badrinath">
+        </div>
+      </div>
+      <div class="text">
+        <h2>Spiritual</h2>
+          <p>Explore holy destinations like Badrinath and experience inner peace in the lap of the Himalayas.</p>
+
+      </div>
+    </a>
+
+    <a href="adveture.html" class="card">
+      <div class="zoom-img">
+        <div class="img-card">
+          <img src="advan.png" alt="Scenic view of Kedarnath">
+        </div>
+      </div>
+      <div class="text">
+        <h2>Adventure</h2>
+          <p>Thrill yourself with trekking, rafting, and paragliding in the breathtaking valleys of Uttarakhand.</p>
+
+      </div>
+    </a>
+
+    <a href="holiday.html" class="card">
+      <div class="zoom-img">
+        <div class="img-card">
+          <img src="holi.png" alt="Scenic view of Jageshwar">
+        </div>
+      </div>
+      <div class="text">
+        <h2>Holiday</h2>
+          <p>Perfect getaway destinations to relax, unwind, and enjoy with family and friends.</p>
+
+      </div>
+    </a>
+
+    <!-- Force new row after 3 cards -->
+    <div class="break"></div>
+
+    <a href="camp.html" class="card">
+      <div class="zoom-img">
+        <div class="img-card">
+          <img src="ca.png" alt="Scenic view of Pithoragarh">
+        </div>
+      </div>
+      <div class="text">
+        <h2>Camping</h2>
+            <p>Stay in cozy tents, enjoy bonfires, and connect with nature under the starlit sky.</p>
+
+      </div>
+    </a>
+
+    <a href="offbeat.html" class="card">
+      <div class="zoom-img">
+        <div class="img-card">
+          <img src="ri1.webp" alt="Scenic view of Rishikesh">
+        </div>
+      </div>
+      <div class="text">
+        <h2>Offbeat Tours</h2>
+          <p>Discover unexplored gems, serene villages, and local culture away from the crowd.</p>
+
+      </div>
+    </a>
+  </div>
+</section>
+
+
+
+
+    <!--===========Footer=================-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-row">
+      <!-- Contact -->
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul>
+          <li>Address: 123 Hill Street, Uttarakhand</li>
+          <li>Contact Support: +91 7690009864</li>
+          <li>Email Support: uttarakhand@tereval.com</li>
+        </ul>
+      </div>
+
+      <!-- Help -->
+      <div class="footer-col">
+        <h4>Get Help</h4>
+        <ul>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Cancellation & Refund Policy</a></li>
+          <li><a href="#">Booking Assistance</a></li>
+          <li><a href="#">Travel Insurance Information</a></li>
+          <li><a href="#">Manage Your Booking</a></li>
+        </ul>
+      </div>
+
+      <!-- Other Places -->
+      <div class="footer-col">
+        <h4>Other Places</h4>
+        <ul>
+          <li><a href="#">Explore Destinations</a></li>
+          <li><a href="#">Popular Tours</a></li>
+          <li><a href="#">Travel Blog</a></li>
+        </ul>
+      </div>
+
+      <!-- Social -->
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/jageshwar_dhamm/"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <!--=============== Chatbot Code Start ===============-->
+    <!-- Chat Icon -->
+<a href="javascript:void(0);" onclick="toggleChatbot()">
+  <img src="boy.png" alt="Chat Icon" class="chat-icon" style="position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; z-index: 1000;">
+</a>
+
+<!-- Chatbot Iframe -->
+<iframe
+  id="chatbot-frame"
+  src="https://www.chatbase.co/chatbot-iframe/mfBcg1D45DFeDBxeO7fkL"
+  style="display: none; position: fixed; bottom: 90px; right: 20px; width: 350px; height: 500px; border: none; border-radius: 15px; z-index: 999;"
+  allow="clipboard-write; microphone">
+</iframe>
+
+<!-- Toggle Script -->
+<script>
+  function toggleChatbot() {
+    const frame = document.getElementById("chatbot-frame");
+    frame.style.display = frame.style.display === "block" ? "none" : "block";
+  }
+</script>
+    <!--=============== Chatbot Code End ===============-->
+        <script>
+            // Check if the URL has a message query
+            const urlParams = new URLSearchParams(window.location.search);
+            const message = urlParams.get('message');
+            
+            if (message === 'success') {
+              alert('Login successful!');
+              // OR show it nicely:
+              // document.getElementById("status").innerText = "Login successful!";
+            }
+          </script>
+
+  <!--=============== Weather Widget Start ===============-->
+
+<!--============== Floating Icons Container ==============-->
+<div style="position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 15px; z-index: 1000;">
+  
+  <!-- Weather Button -->
+  <a href="javascript:void(0);" onclick="toggleWeather()">
+    <img src="weathergif.png" alt="Weather Icon"
+      style="width: 60px; height: 60px; border-radius: 50%; background: white; box-shadow: 0 4px 10px rgba(0,0,0,0.3); padding: 8px; cursor: pointer;">
+  </a>
+
+  <!-- Chatbot Button -->
+  <a href="javascript:void(0);" onclick="toggleChatbot()">
+    <img src="boy.png" alt="Chatbot Icon"
+      style="width: 60px; height: 60px; border-radius: 50%; background: white; box-shadow: 0 4px 10px rgba(0,0,0,0.3); padding: 8px; cursor: pointer;">
+  </a>
+
+</div>
+
+<!-- Weather Iframe -->
+<iframe
+  id="weather-frame"
+  src="weatherapi.html"
+  style="display: none; position: fixed; bottom: 100px; right: 90px; width: 350px; height: 500px; border: none; border-radius: 15px; z-index: 999; box-shadow: 0 0 15px rgba(0, 0, 0, 0.4); background: white;">
+</iframe>
+
+<!-- Chatbot Iframe -->
+<iframe
+  id="chatbot-frame"
+  src="https://www.chatbase.co/chatbot-iframe/mfBcg1D45DFeDBxeO7fkL"
+  style="display: none; position: fixed; bottom: 100px; right: 20px; width: 350px; height: 500px; border: none; border-radius: 15px; z-index: 999;"
+  allow="clipboard-write; microphone">
+</iframe>
+
+<!-- Toggle Scripts -->
+<script>
+  function toggleWeather() {
+    const weatherFrame = document.getElementById("weather-frame");
+    weatherFrame.style.display = weatherFrame.style.display === "block" ? "none" : "block";
+  }
+
+  function toggleChatbot() {
+    const chatFrame = document.getElementById("chatbot-frame");
+    chatFrame.style.display = chatFrame.style.display === "block" ? "none" : "block";
+  }
+</script>
+
+
+
+          <body>
+
+  
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const userName = params.get("name");
+    const userEmail = params.get("email");
+
+    const signupBtn = document.getElementById("signupBtn");
+    const profileMenu = document.getElementById("profileMenu");
+    const userNameDisplay = document.getElementById("userName");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    const profileIcon = document.getElementById("profileIcon");
+
+    // Get logged in user from localStorage
+    let loggedInUser = localStorage.getItem("loggedInUser");
+
+    // Debug info
+    console.log("Initial loggedInUser from localStorage:", loggedInUser);
+    console.log("URL Params:", window.location.search);
+
+    // Only store user from URL if not already logged in
+    if (!loggedInUser && userName && userEmail) {
+      localStorage.setItem("loggedInUser", userName);
+      loggedInUser = userName; // update variable for current session
+      console.log("Stored loggedInUser from URL:", loggedInUser);
+
+      // Remove query params from URL without reloading
+      window.history.replaceState({}, document.title, window.location.pathname);
+      console.log("URL after removing query params:", window.location.href);
+    }
+
+    // Show/hide elements based on logged-in state
+    if (loggedInUser) {
+      signupBtn.style.display = "none";
+      profileMenu.style.display = "inline-block";
+      userNameDisplay.textContent = loggedInUser;
+    } else {
+      signupBtn.style.display = "inline-block";
+      profileMenu.style.display = "none";
+    }
+
+    // Toggle dropdown menu on profile icon click
+    profileIcon.addEventListener("click", (e) => {
+      e.stopPropagation();
+      dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+    });
+
+    // Close dropdown on click outside profileMenu
+    window.addEventListener("click", (e) => {
+      if (!profileMenu.contains(e.target)) {
+        dropdownMenu.style.display = "none";
+      }
+    });
+
+    // Close dropdown on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        dropdownMenu.style.display = "none";
+      }
+    });
+
+    // Logout button clears storage and updates UI
+    logoutBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      console.log("Logging out...");
+      localStorage.removeItem("loggedInUser");
+      dropdownMenu.style.display = "none";
+      signupBtn.style.display = "inline-block";
+      profileMenu.style.display = "none";
+      userNameDisplay.textContent = "";
+    });
+  });
+</script>
+
+
+
+</div>
+</body>
+</html>
